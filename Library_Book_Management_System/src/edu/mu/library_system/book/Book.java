@@ -8,6 +8,19 @@ public class Book {
 	private String ISBN;
 	private double price;
 	
+	/** Default Constructor
+	 *
+	 * This constructor will assign default values to the private attributes to initialize them
+	 * 
+	 */
+	
+	public Book() {
+		this.title = "Unknown";
+		this.author = "Unknown";
+		this.ISBN = "Unknown";
+		this.price = 0.0;
+	}
+	
 	// Getters and Setters
 	public String getTitle() {
 		return title;
@@ -35,5 +48,10 @@ public class Book {
 	}
 	
 	
+	//To String 
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", author=" + author + ", ISBN=" + ISBN + ", price=" + price + "]";
+	}
 	
 }

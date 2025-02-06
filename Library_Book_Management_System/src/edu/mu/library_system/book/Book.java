@@ -10,7 +10,6 @@ public class Book {
 	
 	// Default Constructor
 	// This constructor will assign default values to the private attributes to initialize them
-	
 	public Book() {
 		this.title = "Unknown";
 		this.author = "Unknown";
@@ -19,12 +18,19 @@ public class Book {
 	}
 	
 	// Parameterized Constructor to set all the attributes
-	
 	public Book(String title, String author, String ISBN, double price) {
 		this.title = title;
 		this.author = author;
 		this.ISBN = ISBN;
 		this.price = price;
+	}
+	
+	// Copy Constructor
+	public Book(Book copiedBook) {
+		this.title = copiedBook.title;
+		this.author = copiedBook.author;
+		this.ISBN = copiedBook.ISBN;
+		this.price = copiedBook.price;
 	}
 	
 	// Getters and Setters

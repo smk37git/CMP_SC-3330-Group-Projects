@@ -8,17 +8,23 @@ public class Book {
 	private String ISBN;
 	private double price;
 	
-	/** Default Constructor
-	 *
-	 * This constructor will assign default values to the private attributes to initialize them
-	 * 
-	 */
+	// Default Constructor
+	// This constructor will assign default values to the private attributes to initialize them
 	
 	public Book() {
 		this.title = "Unknown";
 		this.author = "Unknown";
 		this.ISBN = "Unknown";
 		this.price = 0.0;
+	}
+	
+	// Parameterized Constructor to set all the attributes
+	
+	public Book(String title, String author, String ISBN, double price) {
+		this.title = title;
+		this.author = author;
+		this.ISBN = ISBN;
+		this.price = price;
 	}
 	
 	// Getters and Setters
@@ -47,11 +53,20 @@ public class Book {
 		this.price = price;
 	}
 	
+	// Boolean to see if book ISBN is equal to another book
+	public boolean equalsBook(Book book) {
+		if (ISBN == getISBN()) {
+			return false;
+		}
+		return true;
+	}
+	
 	
 	//To String 
 	@Override
 	public String toString() {
 		return "Book [title=" + title + ", author=" + author + ", ISBN=" + ISBN + ", price=" + price + "]";
 	}
+
 	
 }

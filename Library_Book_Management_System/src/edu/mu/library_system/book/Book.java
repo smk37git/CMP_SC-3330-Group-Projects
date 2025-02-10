@@ -60,7 +60,7 @@ public class Book {
 	}
 	
 	// Boolean to see if book ISBN is equal to another book
-	public boolean equalsBook(Book book) {
+	public boolean equalsBook(Object book) {
 		if (ISBN == getISBN()) {
 			return false;
 		}

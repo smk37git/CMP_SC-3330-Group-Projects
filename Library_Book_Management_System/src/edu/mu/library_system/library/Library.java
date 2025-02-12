@@ -52,7 +52,7 @@ public class Library {
 		int d;
 		for (d = 0; d < books.length; d++) {
 			if (books[d] != null) {
-				System.out.println(books[d].toString());
+				System.out.println(d+1 + ". " + books[d].toString());
 			}
 		}
 	}

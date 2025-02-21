@@ -29,5 +29,12 @@ public abstract class MiddleEarthCharacter {
 	 * Return's the race of a character
 	 */
 	public abstract void getRace();
+	
+	// Display Info Method
+	@Override
+	public String toString() {
+		return "MiddleEarthCharacter [name=" + name + ", health=" + health + ", power=" + power + "]";
+	}
+	
 
 }

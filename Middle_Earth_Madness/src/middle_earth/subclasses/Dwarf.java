@@ -7,9 +7,11 @@ public class Dwarf extends MiddleEarthCharacter {
 	
 	// Attack Method
 	@Override
-	public void attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		// TODO Auto-generated method stub
 		
+		
+		return false;
 	}
 
 	// Get Race Method

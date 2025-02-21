@@ -7,10 +7,25 @@ public class Elf extends MiddleEarthCharacter {
 	
 	// Attack Method
 	@Override
-	public void attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		// 1.5x damage to Orc
 		// 0x damage to Dwarf / Elf
 		// 1x damage to Human / Wizard
+		
+		// Attack Value
+		double attack;
+		
+		if(target == "Orc") {
+			attack = attack * 1.5;
+			target.health = target.health - attack;
+			return true;
+		} else if(target == "Human" || target == "Wizard") {
+			attack = attack * 1;
+			target.health = target.health - attack;
+			return true;
+		}else {
+			return false;
+		}
 		
 	}
 

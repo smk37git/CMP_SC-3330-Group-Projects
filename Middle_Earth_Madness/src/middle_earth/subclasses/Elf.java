@@ -8,7 +8,9 @@ public class Elf extends MiddleEarthCharacter {
 	// Attack Method
 	@Override
 	public void attack(MiddleEarthCharacter target) {
-		// TODO Auto-generated method stub
+		// 1.5x damage to Orc
+		// 0x damage to Dwarf / Elf
+		// 1x damage to Human / Wizard
 		
 	}
 

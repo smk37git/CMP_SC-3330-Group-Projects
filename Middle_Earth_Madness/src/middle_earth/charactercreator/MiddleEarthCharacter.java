@@ -22,7 +22,7 @@ public abstract class MiddleEarthCharacter {
 	 * If true, reduce target health
 	 * if false OR target is same kin, do NOT reduce target health
 	 */
-	public abstract void attack(MiddleEarthCharacter target);
+	public abstract boolean attack(MiddleEarthCharacter target);
 	
 	/**
 	 * Abstract getRace Method

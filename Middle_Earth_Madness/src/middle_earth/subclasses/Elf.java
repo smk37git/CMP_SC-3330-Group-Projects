@@ -15,7 +15,10 @@ public class Elf extends MiddleEarthCharacter {
 		// Attack Value
 		double attack;
 		
-		if(target == "Orc") {
+		// Get the race of the target
+		String targetRace = target.getRace();
+		
+		if(targetRace.equals("Orc")) {
 			attack = attack * 1.5;
 			target.health = target.health - attack;
 			return true;
@@ -31,9 +34,15 @@ public class Elf extends MiddleEarthCharacter {
 
 	// Get Race Method
 	@Override
-	public void getRace() {
-		// TODO Auto-generated method stub
+	public String getRace() {
+		return "Elf";
+	}
+	
+	// Attack Method
+	private double AttackValue() {
 		
+		// Base DMG value is at 10
+		return 10.0;
 	}
 
 }

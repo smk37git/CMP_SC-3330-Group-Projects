@@ -9,23 +9,26 @@ public class Elf extends MiddleEarthCharacter {
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
 		// 1.5x damage to Orc
-		// 0x damage to Dwarf / Elf
 		// 1x damage to Human / Wizard
-		
-		// Attack Value
-		double attack;
+		// 0x damage to Dwarf / Elf
+
+		// Attack Value / Damage Values
+		double attack = attackValue();
+		double damage;
 		
 		// Get the race of the target
 		String targetRace = target.getRace();
 		
 		if(targetRace.equals("Orc")) {
-			attack = attack * 1.5;
-			target.health = target.health - attack;
+			damage = attack * 1.5;
+			target.setHealth(target.getHealth() - damage);
 			return true;
-		} else if(target == "Human" || target == "Wizard") {
-			attack = attack * 1;
-			target.health = target.health - attack;
+			
+		} else if(targetRace.equals("Human") || targetRace.equals("Wizard")) {
+			damage = attack * 1;
+			target.setHealth(target.getHealth() - damage);
 			return true;
+			
 		}else {
 			return false;
 		}
@@ -39,7 +42,7 @@ public class Elf extends MiddleEarthCharacter {
 	}
 	
 	// Attack Method
-	private double AttackValue() {
+	private double attackValue() {
 		
 		// Base DMG value is at 10
 		return 10.0;

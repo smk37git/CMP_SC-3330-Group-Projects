@@ -29,4 +29,31 @@ public class CharacterManager {
 		}
 		return false;
 	}
+	
+	//searches characters array by name. returns that character if found, null if not
+	MiddleEarthCharacter getCharacter(String name) {
+		int d;
+		for (d=0; d < characters.length; d++) {
+			if (characters[d].getName().equals(name)) {
+				return characters[d];
+			}
+		}
+		return null;
+	}
+	
+	
+	boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
+		int g;
+		for (g = 0; g < characters.length; g++) {
+			if (characters[g].equals(character)) {
+				
+			}
+		}
+	}
+	
+	boolean deleteCharacter(MiddleEarthCharacter character) {
+		
+	}
+	
+	
 }

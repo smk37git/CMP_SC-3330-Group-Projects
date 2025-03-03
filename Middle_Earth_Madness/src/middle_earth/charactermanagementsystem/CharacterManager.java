@@ -31,7 +31,7 @@ public class CharacterManager {
 	}
 	
 	//searches characters array by name. returns that character if found, null if not
-	MiddleEarthCharacter getCharacter(String name) {
+	public MiddleEarthCharacter getCharacter(String name) {
 		int d;
 		for (d=0; d < characters.length; d++) {
 			if (characters[d].getName().equals(name)) {
@@ -43,19 +43,19 @@ public class CharacterManager {
 	
 	//if different, replaces character's name/health/power with the provided. returns false if no change
 	//is made
-	boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
+	public boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
 		if (character == null) {
 			return false;
 		}
-		if (character.getName().equals(name)) {
+		if (!(character.getName().equals(name))) {
 			character.setName(name);
 			
 		}
-		if (character.getHealth() == health) {
+		if (character.getHealth() != health) {
 			character.setHealth(health);
 			return true;
 		}
-		if (character.getPower() == power) {
+		if (character.getPower() != power) {
 			character.setPower(power);
 			return true;
 		}
@@ -63,7 +63,7 @@ public class CharacterManager {
 	}
 	
 	//deletes a character, shortens characters length by 1 and shifts remaining entries down. 
-	boolean deleteCharacter(MiddleEarthCharacter character) {
+	public boolean deleteCharacter(MiddleEarthCharacter character) {
 		int t;
 		for (t = 0; t < characters.length; t++) {
 			if (characters[t].equals(character)) {
@@ -87,10 +87,10 @@ public class CharacterManager {
 	}
 	
 	//prints every existing character's name/health/power
-	void displayAllCharacters() {
+	public void displayAllCharacters() {
 		for (int o = 0; o < characters.length; o++) {
 			if(characters[o] != null) {
-				System.out.println(characters[o].toString() + "\n");
+				System.out.println(characters[o].toString());
 			}
 		}
 	}

@@ -5,7 +5,7 @@ import middle_earth.charactercreator.MiddleEarthCharacter;
 public class CharacterManager {
 
 	//Fields 
-	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[2];
+	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[1];
 	private int size;
 	
 	//methods
@@ -69,7 +69,7 @@ public class CharacterManager {
 				break;
 			}
 		}
-		MiddleEarthCharacter[] temp = new MiddleEarthCharacter[characters.length];
+		MiddleEarthCharacter[] temp = new MiddleEarthCharacter[characters.length-1];
 		int p = 0;
 		for (int l=0; l<characters.length; l++) {
 			if(l != t) {

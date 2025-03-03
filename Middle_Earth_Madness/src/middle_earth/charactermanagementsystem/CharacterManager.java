@@ -84,8 +84,12 @@ public class CharacterManager {
 		return true;
 	}
 	
-	//void displayAllCharacters() {
-		
-	//}
+	void displayAllCharacters() {
+		for (int o = 0; o < characters.length; o++) {
+			if(characters[o] != null) {
+				System.out.println(characters[o].toString() + "\n");
+			}
+		}
+	}
 	
 }

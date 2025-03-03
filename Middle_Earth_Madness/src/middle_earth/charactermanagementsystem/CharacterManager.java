@@ -43,17 +43,49 @@ public class CharacterManager {
 	
 	
 	boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
-		int g;
-		for (g = 0; g < characters.length; g++) {
-			if (characters[g].equals(character)) {
-				
-			}
+		if (character == null) {
+			return false;
 		}
+		if (character.getName().equals(name)) {
+			character.setName(name);
+			
+		}
+		if (character.getHealth() == health) {
+			character.setHealth(health);
+			return true;
+		}
+		if (character.getPower() == power) {
+			character.setPower(power);
+			return true;
+		}
+		return false;
 	}
 	
 	boolean deleteCharacter(MiddleEarthCharacter character) {
-		
+		int t;
+		for (t = 0; t < characters.length; t++) {
+			if (characters[t].equals(character)) {
+				characters[t] = null;
+				break;
+			}
+		}
+		MiddleEarthCharacter[] temp = new MiddleEarthCharacter[characters.length];
+		int p = 0;
+		for (int l=0; l<characters.length; l++) {
+			if(l != t) {
+				temp[p] = characters[l];
+				p++;
+			}
+		}
+		characters = temp;
+		if (characters[characters.length-1] != null) {
+			return false;
+		}
+		return true;
 	}
 	
+	//void displayAllCharacters() {
+		
+	//}
 	
 }

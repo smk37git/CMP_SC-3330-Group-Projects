@@ -41,7 +41,8 @@ public class CharacterManager {
 		return null;
 	}
 	
-	
+	//if different, replaces character's name/health/power with the provided. returns false if no change
+	//is made
 	boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
 		if (character == null) {
 			return false;
@@ -61,6 +62,7 @@ public class CharacterManager {
 		return false;
 	}
 	
+	//deletes a character, shortens characters length by 1 and shifts remaining entries down. 
 	boolean deleteCharacter(MiddleEarthCharacter character) {
 		int t;
 		for (t = 0; t < characters.length; t++) {
@@ -84,6 +86,7 @@ public class CharacterManager {
 		return true;
 	}
 	
+	//prints every existing character's name/health/power
 	void displayAllCharacters() {
 		for (int o = 0; o < characters.length; o++) {
 			if(characters[o] != null) {

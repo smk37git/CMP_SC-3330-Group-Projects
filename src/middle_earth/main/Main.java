@@ -2,6 +2,7 @@ package middle_earth.main;
 
 import middle_earth.charactercreator.MiddleEarthCharacter;
 import middle_earth.subclasses.*;
+import middle_earth.charactermanagementsystem.CharacterManager;
 
 public class Main {
 
@@ -24,6 +25,12 @@ public class Main {
 		Wizard wizard_test = new Wizard(); 
 		System.out.println(wizard_test.toString());
 
+		CharacterManager charManager = new CharacterManager();
+		charManager.addCharacter(dwarf_test);
+		charManager.addCharacter(orc_test);
+		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
+		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
+		charManager.displayAllCharacters();
 	}
 
 }

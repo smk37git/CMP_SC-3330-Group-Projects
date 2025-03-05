@@ -13,6 +13,10 @@ public class MiddleEarthCouncil {
 	}
 	
 	// Get Instance Method
+	/**
+	 * Request the instance in other files
+	 * @return MiddleEarthCouncil Instance
+	 */
 	public static MiddleEarthCouncil getInstance() {
 		if(instance == null) {
 			instance = new MiddleEarthCouncil();
@@ -21,6 +25,10 @@ public class MiddleEarthCouncil {
 	}
 	
 	// Character Manager
+	/**
+	 * Request CharacterMananger Method
+	 * @return CharacterManager
+	 */
 	CharacterManager getCharacterManager() {
 		return null;
 	}

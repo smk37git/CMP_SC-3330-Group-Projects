@@ -6,6 +6,11 @@ public class Orc extends MiddleEarthCharacter {
 
 	
 	// Attack Method
+	/**
+	 * Will get the target character's race and health and apply accurate damage.
+	 * @parameters getRace(), getHealth(), damage
+	 * @return boolean True + total damage for successful attack, boolean False for unsuccessful attack.
+	 */
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
 		// 1.5x damage to Human
@@ -41,12 +46,20 @@ public class Orc extends MiddleEarthCharacter {
 	}
 
 	// Get Race Method
+	/**
+	 * Request the target's race
+	 * @return Target's Race
+	 */
 	@Override
 	public String getRace() {
 		return "Orc";
 	}
 	
 	// Attack Method
+	/**
+	 * Initializes base damage
+	 * @return base damage
+	 */
 	private double attackValue() {
 		
 		// Base DMG value is at 10

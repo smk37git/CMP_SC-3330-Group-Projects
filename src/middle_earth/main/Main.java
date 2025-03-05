@@ -36,6 +36,14 @@ public class Main {
 		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
 		charManager.displayAllCharacters();
+		
+		System.out.println("Menu (type a number for the desired option):");
+		System.out.println("1. Add a character");
+		System.out.println("2. View characters");
+		System.out.println("3. Update a character");
+		System.out.println("4. Delete character");
+		System.out.println("5. Execute all characters attacks");
+		System.out.println("6. Exit");
 	}
 
 }

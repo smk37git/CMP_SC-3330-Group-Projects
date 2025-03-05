@@ -90,17 +90,18 @@ public class Main {
 					
 				
 			} else if (userInput.equals("2")) {
-				
+				charManager.displayAllCharacters();
 			} else if (userInput.equals("3")) {
-				
+				System.out.println("Which character would you like to update?");
+				charManager.displayAllCharacters();
 			} else if (userInput.equals("4")) {
 				
 			} else if (userInput.equals("5")) {
 				
 			} else if (userInput.equals("6")) {
-				continue;
+				break;
 			} else {
-				System.out.println(Sorry, I couldn't understand that input.");
+				System.out.println("Sorry, I couldn't understand that input.");
 				continue;
 			}
 		}

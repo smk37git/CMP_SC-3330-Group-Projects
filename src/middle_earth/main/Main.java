@@ -13,6 +13,8 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		String userInput = "7";
+		String testUserInput = "7";
+		
 
 		
 		// Subclass TEST
@@ -51,25 +53,54 @@ public class Main {
 			System.out.println(userInput);
 			
 			
-			if (userInput == "1") {
-				System.out.println("What kind of character:"
-						+ "1. Dwarf"
-						+ "2. Elf"
-						+ "3. Human"
-						+ "4. Orc"
-						+ "5. Wizard");
-			} else if (userInput == "2") {
+			if (userInput.equals("1")) {
+				System.out.println("What kind of character:");
+				System.out.println("1. Dwarf");
+				System.out.println("2. Elf");
+				System.out.println("3. Human");
+				System.out.println("4. Orc");
+				System.out.println("5. Wizard");
+				System.out.println("6. Exit");
+				testUserInput = scanner.nextLine();
 				
-			} else if (userInput == "3") {
 				
-			} else if (userInput == "4") {
+				if (testUserInput.equals("1")) {
+					Dwarf newDwarf = new Dwarf();
+					charManager.addCharacter(newDwarf);
+				} else if (testUserInput.equals("2")) {
+					Elf newElf = new Elf();
+					charManager.addCharacter(newElf);
+				} else if (testUserInput.equals("3")) {
+					Human newHuman = new Human();
+					charManager.addCharacter(newHuman);
+				} else if (testUserInput.equals("4")) {
+					Orc newOrc = new Orc();
+					charManager.addCharacter(newOrc);
+				} else if (testUserInput.equals("5")) {
+					Wizard newWizard = new Wizard();
+					charManager.addCharacter(newWizard);
+				} else if (testUserInput.equals("6")) {
+					continue;
+				} else {
+					System.out.println("Sorry, I couldn't understand that input.");
+					continue;
+				}
+
+				System.out.println("Successfully added!");
+					
 				
-			} else if (userInput == "5") {
+			} else if (userInput.equals("2")) {
 				
-			} else if (userInput == "1") {
+			} else if (userInput.equals("3")) {
 				
+			} else if (userInput.equals("4")) {
+				
+			} else if (userInput.equals("5")) {
+				
+			} else if (userInput.equals("6")) {
+				continue;
 			} else {
-				System.out.println("Sorry, I couldn't understand that input.");
+				System.out.println(Sorry, I couldn't understand that input.");
 				continue;
 			}
 		}

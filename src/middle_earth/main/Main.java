@@ -167,17 +167,24 @@ public class Main {
 			} else if (userInput.equals("5")) {
 				System.out.println("Who is attacking? (Type the name)");
 				charManager.displayAllCharacters();
-				String attacker = scanner.nextLine();
+				String attackerName = scanner.nextLine();
 				
-				if (charManager.getCharacter(attacker) != null) {
+				MiddleEarthCharacter attacker = charManager.getCharacter(attackerName);
+				if (attacker != null) {
 					System.out.println("Who is getting attacked? (Type the name)");
 					charManager.displayAllCharacters();
-					String defender = scanner.nextLine();
+					String defenderName = scanner.nextLine();
 					
-					if (charManager.getCharacter(defender) != null) {
-						if (attacker.equals(defender)) {
+					//make sure the character is not hitting themselves
+					MiddleEarthCharacter defender = charManager.getCharacter(defenderName);
+					if (defender != null) {
+						if (attackerName.equals(defenderName)) {
 							System.out.println("Someone can not attack themselves.");
+							continue;
 						}
+						attacker.attack(defender);
+						
+						
 					} else {
 						System.out.println("Sorry, I couldn't understand that input.");
 						continue;
@@ -188,7 +195,7 @@ public class Main {
 				}
 				
 			} else if (userInput.equals("6")) {
-				System.out.println("Thank you for participating!");
+				System.out.println("Thank you for playing!");
 				break;
 			} else {
 				System.out.println("Sorry, I couldn't understand that input.");

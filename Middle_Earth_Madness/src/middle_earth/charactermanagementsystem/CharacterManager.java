@@ -108,7 +108,7 @@ public class CharacterManager {
 			}
 		}
 		characters = temp;
-		if (characters[characters.length-1] != null) {
+		if (characters[t] == character) {
 			return false;
 		}
 		return true;

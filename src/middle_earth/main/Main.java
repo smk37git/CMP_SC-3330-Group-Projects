@@ -14,9 +14,6 @@ public class Main {
 		String userInput = "-1";
 		String testUserInput = "-1";
 		MiddleEarthCharacter characterChoice = null;
-		String userCharacterName;
-		int userCharacterHP;
-		int userCharacterPower;
 		
 
 		
@@ -92,9 +89,11 @@ public class Main {
 				}
 
 				System.out.println("Successfully added!");
+				charManager.updateCommonNames();
 					
 				
 			} else if (userInput.equals("2")) {
+				charManager.updateCommonNames();
 				charManager.displayAllCharacters();
 			} else if (userInput.equals("3")) {
 				System.out.println("Which character would you like to update? (Type the name of the character)");
@@ -105,8 +104,32 @@ public class Main {
 				//use the users input to find a character and update it with the user's input
 				characterChoice = charManager.getCharacter(testUserInput);
 				if (characterChoice != null) {
-					System.out.println("What will the character's new name be?");
+					double newPower = 0;
+					double newHP = 0;
 					
+					System.out.println("What will the character's new name be?");
+					String userCharacterName = scanner.nextLine();
+					
+					System.out.println("What will the character's Health Points be?");
+					String userCharacterHP = scanner.nextLine();
+					try {
+					    newHP = Double.parseDouble(userCharacterHP);
+					    System.out.println(userCharacterName + " now has an HP of " + newHP);
+					} catch (NumberFormatException e) {
+					    System.out.println("Invalid number format: " + userCharacterName);
+					}
+					
+					System.out.println("What will the character's new power be?");
+					String userCharacterPower = scanner.nextLine();
+					
+					try {
+					    newPower = Double.parseDouble(userCharacterPower);
+					    System.out.println(userCharacterPower + " now has a power of " + newPower);
+					} catch (NumberFormatException e) {
+					    System.out.println("Invalid number format: " + userCharacterPower);
+					}
+					
+					charManager.updateCharacter(characterChoice, userCharacterName, newHP, newPower);
 					
 				} else {
 					System.out.println("Sorry, I couldn't understand that input.");

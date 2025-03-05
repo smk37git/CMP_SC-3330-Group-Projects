@@ -7,6 +7,7 @@ public class CharacterManager {
 	//Fields 
 	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[5];
 	private int size;
+	private int nameCount = 0;
 	
 	//methods
 	//adds character c to characters array. doubles array length if full, returns true if necessary
@@ -54,7 +55,6 @@ public class CharacterManager {
 		}
 		if (character.getHealth() != health) {
 			character.setHealth(health);
-			return true;
 		}
 		if (character.getPower() != power) {
 			character.setPower(power);
@@ -98,12 +98,16 @@ public class CharacterManager {
 	
 	public void updateCommonNames() {
 		for (int i=0; i<characters.length; i++) {
-			int nameCount = 0;
-			MiddleEarthCharacter temp = characters[i];
+			MiddleEarthCharacter iTemp = characters[i];
+			if (iTemp == null) {continue;}
 			
-			for (int j=0; j<characters.length; j++) {
-				if (temp.getName().equals(characters[j].getName()) && i != j) {
-					updateCharacter(temp, temp.getName() + nameCount, temp.getHealth(), temp.getPower());
+			for (int j=0; j<=i; j++) {
+				MiddleEarthCharacter jTemp = characters[j];
+				if (jTemp == null) {continue;}
+				if (iTemp.getName().equals(jTemp.getName()) && i != j) {
+					String newName = iTemp.getName();
+					nameCount++;
+					updateCharacter(iTemp, newName + nameCount, iTemp.getHealth(), iTemp.getPower());
 				}
 			}
 		}

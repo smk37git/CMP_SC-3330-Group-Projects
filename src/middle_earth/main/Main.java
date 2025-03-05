@@ -8,6 +8,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Homework Assignment 2 -- Sebastian Main, Jase DeCota, Greg Gomez
+		public static void main(String[] args) {
+			Scanner scanner = new Scanner(System.in);
+		}
+
+		
+		
 		
 		// Subclass TEST
 		Dwarf dwarf_test = new Dwarf();

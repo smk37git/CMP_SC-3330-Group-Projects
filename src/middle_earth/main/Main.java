@@ -42,6 +42,11 @@ public class Main {
 		
 		charManager.addCharacter(new Wizard());
 		
+		
+		/**
+		 * @while When the user has not used the "exit" function of the
+		 * menu, it keeps playing so the player can use it.
+		 */
 		while (userInput != "6") {
 			System.out.println("Menu (type a number for the desired option):");
 			System.out.println("1. Add a character");
@@ -55,6 +60,10 @@ public class Main {
 			System.out.println(userInput);
 			
 			
+			/**
+			 * Case 1: Add character - This takes the users input again
+			 * to make a character of the desired race for the user
+			 */
 			if (userInput.equals("1")) {
 				System.out.println("What kind of character:");
 				System.out.println("1. Dwarf");
@@ -92,10 +101,24 @@ public class Main {
 				charManager.updateCommonNames();
 					
 				
-			} else if (userInput.equals("2")) {
+			} 
+			
+			/**
+			 * Case 2: Display characters - This uses the display
+			 * all characters function to display the characters
+			 * for the user
+			 */
+			else if (userInput.equals("2")) {
 				charManager.updateCommonNames();
 				charManager.displayAllCharacters();
-			} else if (userInput.equals("3")) {
+			} 
+			
+			/**
+			 * Case 3: Update character - this uses the update character
+			 * function combined with the user's input to get new values
+			 * for the desired character.
+			 */
+			else if (userInput.equals("3")) {
 				System.out.println("Which character would you like to update? (Type the name of the character)");
 				charManager.displayAllCharacters();
 				
@@ -136,10 +159,15 @@ public class Main {
 					continue;
 				}
 			} else if (userInput.equals("4")) {
+				System.out.println("Which character do you want to delete? (Type the name)");
+				charManager.displayAllCharacters();
+				characterChoice = charManager.getCharacter(scanner.nextLine());
+				charManager.deleteCharacter(characterChoice);
 				
 			} else if (userInput.equals("5")) {
 				
 			} else if (userInput.equals("6")) {
+				System.out.println("Thank you for participating!");
 				break;
 			} else {
 				System.out.println("Sorry, I couldn't understand that input.");

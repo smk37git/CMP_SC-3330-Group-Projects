@@ -40,7 +40,9 @@ public class Main {
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
 		charManager.displayAllCharacters();
 		
-		charManager.addCharacter(new Wizard());
+		Wizard staffGuy = new Wizard();
+		charManager.addCharacter(staffGuy);
+		charManager.updateCharacter(staffGuy, "Jorge", 75, 30);
 		
 		
 		/**
@@ -164,7 +166,15 @@ public class Main {
 				characterChoice = charManager.getCharacter(scanner.nextLine());
 				charManager.deleteCharacter(characterChoice);
 				
-			} else if (userInput.equals("5")) {
+			} 
+			
+			/**
+			 * Case 5: Attacking someone - this part of the menu gets
+			 * an attacker and defender from the user and uses the
+			 * attack. If the attacker and defender are the same person,
+			 * the attack does not do anything
+			 */
+			else if (userInput.equals("5")) {
 				System.out.println("Who is attacking? (Type the name)");
 				charManager.displayAllCharacters();
 				String attackerName = scanner.nextLine();

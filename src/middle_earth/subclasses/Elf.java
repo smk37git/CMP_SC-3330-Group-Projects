@@ -22,21 +22,22 @@ public class Elf extends MiddleEarthCharacter {
 		if(targetRace.equals("Orc")) {
 			damage = attack * 1.5;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Human") || targetRace.equals("Wizard")) {
 			damage = attack * 1;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Dwarf") || targetRace.equals("Elf")) {
 			damage = attack * 0;
 			target.setHealth(target.getHealth() * damage);
-			return true;
 			
 		}else {
 			return false;
 		}
+		
+		System.out.println(this.getName() + " shoots an arrow at " + target.getName()
+		 + " and deals " + damage + " damage!");
+		return true;
 		
 	}
 

@@ -165,6 +165,28 @@ public class Main {
 				charManager.deleteCharacter(characterChoice);
 				
 			} else if (userInput.equals("5")) {
+				System.out.println("Who is attacking? (Type the name)");
+				charManager.displayAllCharacters();
+				String attacker = scanner.nextLine();
+				
+				if (charManager.getCharacter(attacker) != null) {
+					System.out.println("Who is getting attacked? (Type the name)");
+					charManager.displayAllCharacters();
+					String defender = scanner.nextLine();
+					
+					if (charManager.getCharacter(defender) != null) {
+						if (attacker.equals(defender)) {
+							System.out.println("Someone can not attack themselves.");
+							continue;
+						}
+					} else {
+						System.out.println("Sorry, I couldn't understand that input.");
+						continue;
+					}
+				} else {
+					System.out.println("Sorry, I couldn't understand that input.");
+					continue;
+				}
 				
 			} else if (userInput.equals("6")) {
 				System.out.println("Thank you for participating!");

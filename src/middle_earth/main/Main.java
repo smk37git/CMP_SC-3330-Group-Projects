@@ -184,6 +184,10 @@ public class Main {
 						}
 						attacker.attack(defender);
 						
+						if (defender.getHealth() < 0) {
+							System.out.println(attackerName + " has slain " + defenderName);
+							charManager.deleteCharacter(defender);
+						}
 						
 					} else {
 						System.out.println("Sorry, I couldn't understand that input.");
@@ -194,10 +198,21 @@ public class Main {
 					continue;
 				}
 				
-			} else if (userInput.equals("6")) {
+			} 
+			
+			/**
+			 * This case if for when a user wants to exit the game,
+			 * the loop will break and the game will end
+			 */
+			else if (userInput.equals("6")) {
 				System.out.println("Thank you for playing!");
 				break;
-			} else {
+			} 
+			
+			/**
+			 * If the 
+			 */
+			else {
 				System.out.println("Sorry, I couldn't understand that input.");
 				continue;
 			}

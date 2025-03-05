@@ -177,7 +177,6 @@ public class Main {
 					if (charManager.getCharacter(defender) != null) {
 						if (attacker.equals(defender)) {
 							System.out.println("Someone can not attack themselves.");
-							continue;
 						}
 					} else {
 						System.out.println("Sorry, I couldn't understand that input.");

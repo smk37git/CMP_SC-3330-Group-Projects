@@ -12,6 +12,7 @@ public class Main {
 		// Homework Assignment 2 -- Sebastian Main, Jase DeCota, Greg Gomez
 		
 		Scanner scanner = new Scanner(System.in);
+		String userInput = "7";
 
 		
 		// Subclass TEST
@@ -37,13 +38,41 @@ public class Main {
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
 		charManager.displayAllCharacters();
 		
-		System.out.println("Menu (type a number for the desired option):");
-		System.out.println("1. Add a character");
-		System.out.println("2. View characters");
-		System.out.println("3. Update a character");
-		System.out.println("4. Delete character");
-		System.out.println("5. Execute all characters attacks");
-		System.out.println("6. Exit");
+		while (userInput != "6") {
+			System.out.println("Menu (type a number for the desired option):");
+			System.out.println("1. Add a character");
+			System.out.println("2. View characters");
+			System.out.println("3. Update a character");
+			System.out.println("4. Delete character");
+			System.out.println("5. Execute all characters attacks");
+			System.out.println("6. Exit");
+			
+			userInput = scanner.nextLine();
+			System.out.println(userInput);
+			
+			
+			if (userInput == "1") {
+				System.out.println("What kind of character:"
+						+ "1. Dwarf"
+						+ "2. Elf"
+						+ "3. Human"
+						+ "4. Orc"
+						+ "5. Wizard");
+			} else if (userInput == "2") {
+				
+			} else if (userInput == "3") {
+				
+			} else if (userInput == "4") {
+				
+			} else if (userInput == "5") {
+				
+			} else if (userInput == "1") {
+				
+			} else {
+				System.out.println("Sorry, I couldn't understand that input.");
+				continue;
+			}
+		}
 	}
 
 }

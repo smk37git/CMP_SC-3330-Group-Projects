@@ -2,14 +2,28 @@ package middle_earth.charactermanagementsystem;
 
 import middle_earth.charactercreator.MiddleEarthCharacter;
 
+/**
+ * Manages array of MiddleEarthCharacter objects.
+ * Provides methods to add, search by name, update, delete, or display all characters.
+ */
 public class CharacterManager {
 
-	//Fields 
+	/**
+	 * Array of MiddleEarthCharacter objects. Where every character is stored.
+	 */
 	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[1];
+	
+	/**
+	 * Integer that tracks the number of MiddleEarthCharacter objects in array "characters".
+	 */
 	private int size;
 	
 	//methods
-	//adds character c to characters array. doubles array length if full, returns true if necessary
+	/**
+	 * Adds a character to "characters" array. If full afterwards, doubles array size.
+	 * @param c The character being added.
+	 * @return True if array size was doubled, false otherwise.
+	 */
 	public boolean addCharacter(MiddleEarthCharacter c) {
 		int i;
 		for (i = 0; i < characters.length; i++) {
@@ -30,7 +44,11 @@ public class CharacterManager {
 		return false;
 	}
 	
-	//searches characters array by name. returns that character if found, null if not
+	/**
+	 * Searches array "characters" for a character by their name
+	 * @param name The name used to search the array
+	 * @return the MiddleEarthCharacter with specified name. Returns null if one does not exist.
+	 */
 	public MiddleEarthCharacter getCharacter(String name) {
 		int d;
 		for (d=0; d < characters.length; d++) {
@@ -41,8 +59,14 @@ public class CharacterManager {
 		return null;
 	}
 	
-	//if different, replaces character's name/health/power with the provided. returns false if no change
-	//is made
+	/**
+	 * Updates the name, health, and/or power of a MiddleEarthCharacter object, ONLY IF they are different.
+	 * @param character The character being updated
+	 * @param name The updated name to be given to the character
+	 * @param health The updated health to be given to the character.
+	 * @param power The updated power to be given to the character
+	 * @return True if any of the character's attributes were updated, false if not or if character did not exist
+	 */
 	public boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
 		if (character == null) {
 			return false;
@@ -62,7 +86,11 @@ public class CharacterManager {
 		return false;
 	}
 	
-	//deletes a character, shortens characters length by 1 and shifts remaining entries down. 
+	/**
+	 * Deletes an existing MiddleEarthCharacter object and shifts any following in "characters" array left. 
+	 * @param character The character to be deleted.
+	 * @return True if character is deleted and array successfully updated. False otherwise.
+	 */
 	public boolean deleteCharacter(MiddleEarthCharacter character) {
 		int t;
 		for (t = 0; t < characters.length; t++) {
@@ -86,7 +114,9 @@ public class CharacterManager {
 		return true;
 	}
 	
-	//prints every existing character's name/health/power
+	/**
+	 * Prints out the information of every MiddleEarthCharacter object in the "characters" array.
+	 */
 	public void displayAllCharacters() {
 		for (int o = 0; o < characters.length; o++) {
 			if(characters[o] != null) {

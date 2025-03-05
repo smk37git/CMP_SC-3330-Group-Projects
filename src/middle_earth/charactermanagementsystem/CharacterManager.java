@@ -5,7 +5,7 @@ import middle_earth.charactercreator.MiddleEarthCharacter;
 public class CharacterManager {
 
 	//Fields 
-	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[1];
+	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[5];
 	private int size;
 	
 	//methods
@@ -16,6 +16,7 @@ public class CharacterManager {
 			if (characters[i] == null) {
 				characters[i] = c;
 				size++;
+				break;
 			}
 		}
 		if (size == characters.length) {
@@ -43,7 +44,7 @@ public class CharacterManager {
 	
 	//if different, replaces character's name/health/power with the provided. returns false if no change
 	//is made
-	public boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
+	public boolean updateCharacter(MiddleEarthCharacter character, String name, double health, double power) {
 		if (character == null) {
 			return false;
 		}
@@ -91,6 +92,19 @@ public class CharacterManager {
 		for (int o = 0; o < characters.length; o++) {
 			if(characters[o] != null) {
 				System.out.println(characters[o].toString());
+			}
+		}
+	}
+	
+	public void updateCommonNames() {
+		for (int i=0; i<characters.length; i++) {
+			int nameCount = 0;
+			MiddleEarthCharacter temp = characters[i];
+			
+			for (int j=0; j<characters.length; j++) {
+				if (temp.getName().equals(characters[j].getName()) && i != j) {
+					updateCharacter(temp, temp.getName() + nameCount, temp.getHealth(), temp.getPower());
+				}
 			}
 		}
 	}

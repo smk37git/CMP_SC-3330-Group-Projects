@@ -10,10 +10,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Homework Assignment 2 -- Sebastian Main, Jase DeCota, Greg Gomez
-		
 		Scanner scanner = new Scanner(System.in);
-		String userInput = "7";
-		String testUserInput = "7";
+		String userInput = "-1";
+		String testUserInput = "-1";
+		MiddleEarthCharacter characterChoice = null;
+		String userCharacterName;
+		int userCharacterHP;
+		int userCharacterPower;
 		
 
 		
@@ -39,6 +42,8 @@ public class Main {
 		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
 		charManager.displayAllCharacters();
+		
+		charManager.addCharacter(new Wizard());
 		
 		while (userInput != "6") {
 			System.out.println("Menu (type a number for the desired option):");
@@ -92,8 +97,21 @@ public class Main {
 			} else if (userInput.equals("2")) {
 				charManager.displayAllCharacters();
 			} else if (userInput.equals("3")) {
-				System.out.println("Which character would you like to update?");
+				System.out.println("Which character would you like to update? (Type the name of the character)");
 				charManager.displayAllCharacters();
+				
+				testUserInput = scanner.nextLine();
+				
+				//use the users input to find a character and update it with the user's input
+				characterChoice = charManager.getCharacter(testUserInput);
+				if (characterChoice != null) {
+					System.out.println("What will the character's new name be?");
+					
+					
+				} else {
+					System.out.println("Sorry, I couldn't understand that input.");
+					continue;
+				}
 			} else if (userInput.equals("4")) {
 				
 			} else if (userInput.equals("5")) {

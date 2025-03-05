@@ -69,6 +69,7 @@ public class CharacterManager {
 		for (t = 0; t < characters.length; t++) {
 			if (characters[t].equals(character)) {
 				characters[t] = null;
+				size--;
 				break;
 			}
 		}
@@ -111,6 +112,10 @@ public class CharacterManager {
 				}
 			}
 		}
+	}
+	
+	public void allOutAttack() {
+		
 	}
 	
 }

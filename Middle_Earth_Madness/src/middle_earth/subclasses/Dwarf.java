@@ -22,21 +22,24 @@ public class Dwarf extends MiddleEarthCharacter {
 		if(targetRace.equals("Elf")) {
 			damage = attack * 1.5;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Human") || targetRace.equals("Orc")) {
 			damage = attack * 1;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Wizard") || targetRace.equals("Dwarf")) {
 			damage = attack * 0;
 			target.setHealth(target.getHealth() * damage);
-			return true;
 			
 		}else {
 			return false;
 		}
+		
+
+		//Character specific attack sequence
+		System.out.println(this.getName() + " Swings his axe at " + target.getName()
+		 + " and deals " + damage + " damage!");
+		return true;
 		
 	}
 

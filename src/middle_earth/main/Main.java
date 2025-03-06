@@ -17,33 +17,26 @@ public class Main {
 		
 
 		
-		// Subclass TEST
+		/**
+		 * hard-coded characters to start the user off
+		 */
 		Dwarf dwarf_test = new Dwarf();
 		System.out.println(dwarf_test.toString());
-		
-		Elf elf_test = new Elf();
-		System.out.println(elf_test.toString());
-		
-		Human human_test = new Human();
-		System.out.println(human_test.toString());
 		
 		Orc orc_test = new Orc();
 		System.out.println(orc_test.toString());
 		
-		Wizard wizard_test = new Wizard(); 
-		System.out.println(wizard_test.toString());
+		Wizard staffGuy = new Wizard(); 
+		System.out.println(staffGuy.toString());
 
 		CharacterManager charManager = new CharacterManager();
 		charManager.addCharacter(dwarf_test);
 		charManager.addCharacter(orc_test);
+		charManager.addCharacter(staffGuy);
 		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
-		charManager.displayAllCharacters();
-		
-		Wizard staffGuy = new Wizard();
-		charManager.addCharacter(staffGuy);
 		charManager.updateCharacter(staffGuy, "Jorge", 75, 30);
-		
+		charManager.displayAllCharacters();
 		
 		/**
 		 * @while When the user has not used the "exit" function of the
@@ -132,6 +125,10 @@ public class Main {
 					double newPower = 0;
 					double newHP = 0;
 					
+					/**
+					 * prompts for getting information on the updated version
+					 * of the character.
+					 */
 					System.out.println("What will the character's new name be?");
 					String userCharacterName = scanner.nextLine();
 					
@@ -160,7 +157,12 @@ public class Main {
 					System.out.println("Sorry, I couldn't understand that input.");
 					continue;
 				}
-			} else if (userInput.equals("4")) {
+			} 
+			
+			/**
+			 * Uses characterManager methods to delete a character
+			 */
+			else if (userInput.equals("4")) {
 				System.out.println("Which character do you want to delete? (Type the name)");
 				charManager.displayAllCharacters();
 				characterChoice = charManager.getCharacter(scanner.nextLine());

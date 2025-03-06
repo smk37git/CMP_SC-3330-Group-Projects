@@ -35,6 +35,8 @@ public class Dwarf extends MiddleEarthCharacter {
 			return false;
 		}
 		
+
+		//Character specific attack sequence
 		System.out.println(this.getName() + " Swings his axe at " + target.getName()
 		 + " and deals " + damage + " damage!");
 		return true;

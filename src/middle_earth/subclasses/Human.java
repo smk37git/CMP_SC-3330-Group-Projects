@@ -35,6 +35,7 @@ public class Human extends MiddleEarthCharacter {
 			return false;
 		}
 		
+		//Character specific attack sequence
 		System.out.println(this.getName() + " parries " + target.getName()
 		 + " and stabs them for " + damage + " damage!");
 		return true;

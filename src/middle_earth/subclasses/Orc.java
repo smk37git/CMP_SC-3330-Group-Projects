@@ -34,7 +34,8 @@ public class Orc extends MiddleEarthCharacter {
 		}else {
 			return false;
 		}
-		
+
+		//Character specific attack sequence
 		System.out.println(this.getName() + " Swings his sword on " + target.getName()
 		 + " and deals " + damage + " damage!");
 		return true;

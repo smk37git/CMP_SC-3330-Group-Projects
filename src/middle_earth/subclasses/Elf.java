@@ -35,6 +35,8 @@ public class Elf extends MiddleEarthCharacter {
 			return false;
 		}
 		
+
+		//Character specific attack sequence
 		System.out.println(this.getName() + " shoots an arrow at " + target.getName()
 		 + " and deals " + damage + " damage!");
 		return true;

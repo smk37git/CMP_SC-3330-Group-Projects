@@ -220,7 +220,7 @@ public class Main {
 			} 
 			
 			/**
-			 * If the 
+			 * If there is an input that doesn't make sense, re-do the menu
 			 */
 			else {
 				System.out.println("Sorry, I couldn't understand that input.");

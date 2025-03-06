@@ -97,6 +97,13 @@ public class CharacterManager {
 		}
 	}
 	
+	/**
+	 * @param - not necessary for this method
+	 * 
+	 * This function runs after adding a character and just before
+	 * displaying all of the characters so that there are none of
+	 * the same names.
+	 */
 	public void updateCommonNames() {
 		for (int i=0; i<characters.length; i++) {
 			MiddleEarthCharacter iTemp = characters[i];

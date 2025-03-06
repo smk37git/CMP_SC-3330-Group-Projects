@@ -27,22 +27,23 @@ public class Orc extends MiddleEarthCharacter {
 		if(targetRace.equals("Human")) {
 			damage = attack * 1.5;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Dwarf") || targetRace.equals("Wizard")) {
 			damage = attack * 1;
 			target.setHealth(target.getHealth() - damage);
-			return true;
 			
 		} else if(targetRace.equals("Elf") || targetRace.equals("Orc")) {
 			damage = attack * 0;
 			target.setHealth(target.getHealth() * damage);
-			return true;
 			
 		}else {
 			return false;
 		}
-		
+
+		//Character specific attack sequence
+		System.out.println(this.getName() + " Swings his sword on " + target.getName()
+		 + " and deals " + damage + " damage!");
+		return true;
 	}
 
 	// Get Race Method

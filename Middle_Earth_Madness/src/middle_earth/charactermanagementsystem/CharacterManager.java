@@ -125,4 +125,27 @@ public class CharacterManager {
 		}
 	}
 	
+	/**
+	 * This function uses string comparison to test
+	 * if multiple characters have the same name.
+	 * then, it adds a new number to the end of
+	 * the name to make it different.
+	 */
+	public void updateCommonNames() {
+		for (int i=0; i<characters.length; i++) {
+			MiddleEarthCharacter iTemp = characters[i];
+			if (iTemp == null) {continue;}
+			
+			for (int j=0; j<=i; j++) {
+				MiddleEarthCharacter jTemp = characters[j];
+				if (jTemp == null) {continue;}
+				if (iTemp.getName().equals(jTemp.getName()) && i != j) {
+					String newName = iTemp.getName();
+					nameCount++;
+					updateCharacter(iTemp, newName + nameCount, iTemp.getHealth(), iTemp.getPower());
+				}
+			}
+		}
+	}
+	
 }

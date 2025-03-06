@@ -30,8 +30,9 @@ public class Main {
 		System.out.println(staffGuy.toString());
 
 		CharacterManager charManager = new CharacterManager();
-		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
-		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
+		charManager.addCharacter(dwarf_test);
+		charManager.addCharacter(orc_test);
+		charManager.addCharacter(staffGuy);
 		charManager.updateCharacter(dwarf_test, "Bob", 50, 10);
 		charManager.updateCharacter(orc_test, "Dylan", 150, 20);
 		charManager.updateCharacter(staffGuy, "Jorge", 75, 30);

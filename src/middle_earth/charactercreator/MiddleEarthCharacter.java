@@ -31,62 +31,31 @@ public abstract class MiddleEarthCharacter {
 	public abstract String getRace();
 	
 	// Getters and Setters
-	
-	/**
-	 * Request Character's Name
-	 * @return Character's Name
-	 */
 	public String getName() {
 		return name;
 	}
-	
-	/**
-	 * Request to set/change Character's Name
-	 * @param name
-	 * Return Character's new name
-	 */
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	/**
-	 * Request Character's Health
-	 * @return Character's Health
-	 */
+
 	public double getHealth() {
 		return health;
 	}
 
-	/**
-	 * Request to set/change Character's Health
-	 * @param health
-	 * Return Character's New Health
-	 */
 	public void setHealth(double health) {
 		this.health = health;
 	}
 
-	/**
-	 * Request Character's Power
-	 * @return Character's power
-	 */
 	public double getPower() {
 		return power;
 	}
 
-	/**
-	 * Request to set/change Character's Power
-	 * @param power
-	 * Return Character's New Power
-	 */
 	public void setPower(double power) {
 		this.power = power;
 	}
 	
 	// Display Info Method
-	/**
-	 * Return full character's info in string format (name, health, power)
-	 */
 	@Override
 	public String toString() {
 		return "MiddleEarthCharacter [name=" + name + ", health=" + health + ", power=" + power + "]";

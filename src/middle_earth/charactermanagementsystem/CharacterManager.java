@@ -2,34 +2,22 @@ package middle_earth.charactermanagementsystem;
 
 import middle_earth.charactercreator.MiddleEarthCharacter;
 
-/**
- * Manages array of MiddleEarthCharacter objects.
- * Provides methods to add, search by name, update, delete, or display all characters.
- */
 public class CharacterManager {
 
-	/**
-	 * Array of MiddleEarthCharacter objects. Where every character is stored.
-	 */
-	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[1];
-	
-	/**
-	 * Integer that tracks the number of MiddleEarthCharacter objects in array "characters".
-	 */
+	//Fields 
+	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[5];
 	private int size;
+	private int nameCount = 0;
 	
 	//methods
-	/**
-	 * Adds a character to "characters" array. If full afterwards, doubles array size.
-	 * @param c The character being added.
-	 * @return True if array size was doubled, false otherwise.
-	 */
+	//adds character c to characters array. doubles array length if full, returns true if necessary
 	public boolean addCharacter(MiddleEarthCharacter c) {
 		int i;
 		for (i = 0; i < characters.length; i++) {
 			if (characters[i] == null) {
 				characters[i] = c;
 				size++;
+				break;
 			}
 		}
 		if (size == characters.length) {
@@ -44,11 +32,7 @@ public class CharacterManager {
 		return false;
 	}
 	
-	/**
-	 * Searches array "characters" for a character by their name
-	 * @param name The name used to search the array
-	 * @return the MiddleEarthCharacter with specified name. Returns null if one does not exist.
-	 */
+	//searches characters array by name. returns that character if found, null if not
 	public MiddleEarthCharacter getCharacter(String name) {
 		int d;
 		for (d=0; d < characters.length; d++) {
@@ -59,15 +43,9 @@ public class CharacterManager {
 		return null;
 	}
 	
-	/**
-	 * Updates the name, health, and/or power of a MiddleEarthCharacter object, ONLY IF they are different.
-	 * @param character The character being updated
-	 * @param name The updated name to be given to the character
-	 * @param health The updated health to be given to the character.
-	 * @param power The updated power to be given to the character
-	 * @return True if any of the character's attributes were updated, false if not or if character did not exist
-	 */
-	public boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
+	//if different, replaces character's name/health/power with the provided. returns false if no change
+	//is made
+	public boolean updateCharacter(MiddleEarthCharacter character, String name, double health, double power) {
 		if (character == null) {
 			return false;
 		}
@@ -77,7 +55,6 @@ public class CharacterManager {
 		}
 		if (character.getHealth() != health) {
 			character.setHealth(health);
-			return true;
 		}
 		if (character.getPower() != power) {
 			character.setPower(power);
@@ -86,16 +63,13 @@ public class CharacterManager {
 		return false;
 	}
 	
-	/**
-	 * Deletes an existing MiddleEarthCharacter object and shifts any following in "characters" array left. 
-	 * @param character The character to be deleted.
-	 * @return True if character is deleted and array successfully updated. False otherwise.
-	 */
+	//deletes a character, shortens characters length by 1 and shifts remaining entries down. 
 	public boolean deleteCharacter(MiddleEarthCharacter character) {
 		int t;
 		for (t = 0; t < characters.length; t++) {
 			if (characters[t].equals(character)) {
 				characters[t] = null;
+				size--;
 				break;
 			}
 		}
@@ -108,15 +82,13 @@ public class CharacterManager {
 			}
 		}
 		characters = temp;
-		if (characters[t] == character) {
+		if (characters[characters.length-1] != null) {
 			return false;
 		}
 		return true;
 	}
 	
-	/**
-	 * Prints out the information of every MiddleEarthCharacter object in the "characters" array.
-	 */
+	//prints every existing character's name/health/power
 	public void displayAllCharacters() {
 		for (int o = 0; o < characters.length; o++) {
 			if(characters[o] != null) {
@@ -125,4 +97,20 @@ public class CharacterManager {
 		}
 	}
 	
+	public void updateCommonNames() {
+		for (int i=0; i<characters.length; i++) {
+			MiddleEarthCharacter iTemp = characters[i];
+			if (iTemp == null) {continue;}
+			
+			for (int j=0; j<=i; j++) {
+				MiddleEarthCharacter jTemp = characters[j];
+				if (jTemp == null) {continue;}
+				if (iTemp.getName().equals(jTemp.getName()) && i != j) {
+					String newName = iTemp.getName();
+					nameCount++;
+					updateCharacter(iTemp, newName + nameCount, iTemp.getHealth(), iTemp.getPower());
+				}
+			}
+		}
+	}
 }

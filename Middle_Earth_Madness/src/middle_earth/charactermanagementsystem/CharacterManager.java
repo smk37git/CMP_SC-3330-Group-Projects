@@ -7,6 +7,7 @@ import middle_earth.charactercreator.MiddleEarthCharacter;
  * Provides methods to add, search by name, update, delete, or display all characters.
  */
 public class CharacterManager {
+	private int nameCount = 0;
 
 	/**
 	 * Array of MiddleEarthCharacter objects. Where every character is stored.
@@ -67,7 +68,7 @@ public class CharacterManager {
 	 * @param power The updated power to be given to the character
 	 * @return True if any of the character's attributes were updated, false if not or if character did not exist
 	 */
-	public boolean updateCharacter(MiddleEarthCharacter character, String name, int health, int power) {
+	public boolean updateCharacter(MiddleEarthCharacter character, String name, double health, double power) {
 		if (character == null) {
 			return false;
 		}

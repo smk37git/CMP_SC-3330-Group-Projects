@@ -15,12 +15,14 @@ public class Cell {
 		this.left = left;
 		this.right = right;
 	}
-
+	
+	/* To String */
 	@Override
 	public String toString() {
 		return "Cell [up=" + up + ", down=" + down + ", left=" + left + ", right=" + right + "]";
 	}
 
+	/* Getters and Setters */
 	public CellComponents getUp() {
 		return up;
 	}

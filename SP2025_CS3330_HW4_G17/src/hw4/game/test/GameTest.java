@@ -58,19 +58,19 @@ class GameTest {
 
 	private static Stream<Arguments> playMovementProvider() {
 		return Stream.of(Arguments.of(true, game.play(Movement.UP, player)),
-				Arguments.of(false, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.DOWN, player)),
-				Arguments.of(false, game.play(Movement.DOWN, player)),
-				Arguments.of(true, game.play(Movement.UP, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
-				Arguments.of(true, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
-				Arguments.of(false, game.play(Movement.LEFT, player)),
-				Arguments.of(true, game.play(Movement.UP, player)),
-				Arguments.of(false, game.play(Movement.UP, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player))
-				);
+			Arguments.of(false, game.play(Movement.RIGHT, player)),
+			Arguments.of(true, game.play(Movement.DOWN, player)),
+			Arguments.of(false, game.play(Movement.DOWN, player)),
+			Arguments.of(true, game.play(Movement.UP, player)),
+			Arguments.of(true, game.play(Movement.LEFT, player)),
+			Arguments.of(true, game.play(Movement.RIGHT, player)),
+			Arguments.of(true, game.play(Movement.LEFT, player)),
+			Arguments.of(false, game.play(Movement.LEFT, player)),
+			Arguments.of(true, game.play(Movement.UP, player)),
+			Arguments.of(false, game.play(Movement.UP, player)),
+			Arguments.of(true, game.play(Movement.LEFT, player)),
+			Arguments.of(true, game.play(Movement.LEFT, player))
+			);
 	}
 
 
@@ -83,19 +83,19 @@ class GameTest {
 	@Test
 	public void testToString() {
 		assertEquals("Game [grid="
-				+ "Grid [rows=["
-				+ "Row [cells=["
-				+ "Cell [left=EXIT, right=APERTURE, up=WALL, down=APERTURE], "
-				+ "Cell [left=APERTURE, right=WALL, up=WALL, down=APERTURE], "
-				+ "Cell [left=WALL, right=WALL, up=WALL, down=APERTURE]]], "
-				+ "Row [cells=["
-				+ "Cell [left=WALL, right=WALL, up=APERTURE, down=APERTURE], "
-				+ "Cell [left=WALL, right=APERTURE, up=APERTURE, down=APERTURE], "
-				+ "Cell [left=APERTURE, right=WALL, up=APERTURE, down=APERTURE]]], "
-				+ "Row [cells=["
-				+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL], "
-				+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL], "
-				+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL]]]]]]", game.toString());
+			+ "Grid [rows=["
+			+ "Row [cells=["
+			+ "Cell [left=EXIT, right=APERTURE, up=WALL, down=APERTURE], "
+			+ "Cell [left=APERTURE, right=WALL, up=WALL, down=APERTURE], "
+			+ "Cell [left=WALL, right=WALL, up=WALL, down=APERTURE]]], "
+			+ "Row [cells=["
+			+ "Cell [left=WALL, right=WALL, up=APERTURE, down=APERTURE], "
+			+ "Cell [left=WALL, right=APERTURE, up=APERTURE, down=APERTURE], "
+			+ "Cell [left=APERTURE, right=WALL, up=APERTURE, down=APERTURE]]], "
+			+ "Row [cells=["
+			+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL], "
+			+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL], "
+			+ "Cell [left=WALL, right=WALL, up=APERTURE, down=WALL]]]]]]", game.toString());
 
 	}
 	

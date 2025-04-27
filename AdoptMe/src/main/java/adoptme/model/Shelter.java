@@ -14,6 +14,15 @@ public class Shelter <T extends Pet> {
 		pets.add(pet);
 	}
 	
+	public boolean removePet(int id, T pet) {
+		if (pet.getId() == id) {
+			pets.remove(pet);
+			return true;
+		} else if (pet.getId() != id) {
+			return false;
+		}
+	}
+	
 	/**
 	 * For into If statement to check if a pet is adoptable (return true if yes and use setter, false if no).
 	 * 

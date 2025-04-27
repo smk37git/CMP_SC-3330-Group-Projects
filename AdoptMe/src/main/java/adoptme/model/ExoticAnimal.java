@@ -1,4 +1,4 @@
-package adoptme.exoticanimal;
+package adoptme.model;
 
 public class ExoticAnimal {
 	

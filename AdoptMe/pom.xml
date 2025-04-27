@@ -3,4 +3,12 @@
   <groupId>AdoptMe</groupId>
   <artifactId>AdoptMe</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependecies>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  		<version>2.13.1</version>
+  	</dependency>
+  </dependecies>
 </project>

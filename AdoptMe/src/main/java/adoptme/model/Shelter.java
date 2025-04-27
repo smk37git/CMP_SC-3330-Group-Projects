@@ -14,6 +14,12 @@ public class Shelter <T extends Pet> {
 		pets.add(pet);
 	}
 	
+	/** Remove pet from list
+	 * 
+	 * @param id
+	 * @param pet
+	 * @return (If statement to find ID: remove if true, do nothing if false)
+	 */
 	public boolean removePet(int id, T pet) {
 		if (pet.getId() == id) {
 			pets.remove(pet);
@@ -21,6 +27,12 @@ public class Shelter <T extends Pet> {
 		} else if (pet.getId() != id) {
 			return false;
 		}
+		return false;
+	}
+	
+	// Get all Pets
+	public List<T> getAllPets() {
+		return new ArrayList<>(pets);
 	}
 	
 	/**

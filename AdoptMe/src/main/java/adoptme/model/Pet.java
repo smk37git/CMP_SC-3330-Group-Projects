@@ -3,7 +3,7 @@ package adoptme.model;
 public abstract class Pet {
 	
 	// Attributes
-	private String id;
+	private int id;
 	private String name;
 	private String type;
 	private String species;
@@ -13,10 +13,10 @@ public abstract class Pet {
 	// Getters and Setters
 	
 	// Get / Set ID
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

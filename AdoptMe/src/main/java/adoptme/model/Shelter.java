@@ -2,9 +2,34 @@ package adoptme.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import adoptme.model.Pet;
 
 public class Shelter <T extends Pet> {
 	
 	// Create Pets List
 	private List<T> pets = new ArrayList<>();
+	
+	// Add pet to list
+	public void addPet (T pet) {
+		pets.add(pet);
+	}
+	
+	/**
+	 * For into If statement to check if a pet is adoptable (return true if yes and use setter, false if no).
+	 * 
+	 * @param int ID
+	 * @return if true = adopt pet
+	 * @return if false = pet is already adopted
+	 */
+	public boolean adoptPet(int id) {
+		for (T pet: pets) {
+			if (pet.getId() == id && !pet.isAdopted()) {
+				pet.setAdopted(true);
+				return true;
+			} else if (pet.getId() == id && pet.isAdopted()) {
+				return false;
+			}
+		}
+		return false;
+	}
 }

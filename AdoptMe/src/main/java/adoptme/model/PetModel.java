@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public abstract class Pet {
+public abstract class PetModel {
 	
 	// Attributes
 	private int id;

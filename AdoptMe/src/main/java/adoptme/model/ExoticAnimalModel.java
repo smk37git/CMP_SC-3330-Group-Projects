@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public class ExoticAnimal {
+public class ExoticAnimalModel {
 	
 	// Attributes
 	private String uniqueId;

@@ -2,9 +2,9 @@ package adoptme.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import adoptme.model.Pet;
+import adoptme.model.PetModel;
 
-public class Shelter <T extends Pet> {
+public class ShelterModel <T extends PetModel> {
 	
 	// Create Pets List
 	private List<T> pets = new ArrayList<>();

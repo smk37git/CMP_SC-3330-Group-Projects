@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import adoptme.model.PetModel;
+import adoptme.model.PetAgeComparator;
+import adoptme.model.PetSpeciesComparator;
 
 public class ShelterModel <T extends PetModel> {
 	
@@ -58,5 +60,15 @@ public class ShelterModel <T extends PetModel> {
 	// Sort pets alphabetically
 	public void nameSort() {
 		Collections.sort(pets);
+	}
+	
+	// Sort pets by age
+	public void ageSort(PetAgeComparator comparator) {
+		Collections.sort(pets, comparator);
+	}
+	
+	//sort pets by species
+	public void speciesSort(PetSpeciesComparator comparator) {
+		Collections.sort(pets, comparator);
 	}
 }

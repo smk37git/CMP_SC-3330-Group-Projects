@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public abstract class PetModel {
+public abstract class PetModel implements Comparable<PetModel>{
 	
 	// Attributes
 	private int id;
@@ -65,5 +65,11 @@ public abstract class PetModel {
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", species=" + species + ", age=" + age
 				+ ", adopted=" + adopted + "]";
+	}
+	
+	//Comparable
+	@Override
+	public int compareTo(PetModel p) {
+		return this.name.compareTo(p.getName());
 	}
 }

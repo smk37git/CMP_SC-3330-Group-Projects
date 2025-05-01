@@ -1,7 +1,6 @@
 package adoptme.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import adoptme.model.Pet;
 
@@ -53,10 +52,5 @@ public class Shelter <T extends Pet> {
 			}
 		}
 		return false;
-	}
-	
-	// Sort pets alphabetically
-	public void nameSort() {
-		Collections.sort(pets);
 	}
 }

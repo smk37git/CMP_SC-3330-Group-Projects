@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public abstract class Pet implements IPetModel{
+public abstract class BasicPet implements IPetModel{
 	//attributes
 	private int id;
 	private String name;

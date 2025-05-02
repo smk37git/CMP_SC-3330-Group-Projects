@@ -1,5 +1,5 @@
 package adoptme.model;
 
-public class DogModel extends Pet {
+public class DogModel extends BasicPet {
 	
 }

@@ -2,12 +2,12 @@ package adoptme.model;
 
 import java.util.Comparator;
 
-import adoptme.model.PetModel;
+import adoptme.model.IPetModel;
 
-public class PetAgeComparator implements Comparator<PetModel>{
+public class PetAgeComparator implements Comparator<IPetModel>{
 	
 	@Override
-	public int compare(PetModel o1, PetModel o2) {
+	public int compare(IPetModel o1, IPetModel o2) {
 		return Integer.compare(o1.getAge(), o2.getAge());
 	}
 

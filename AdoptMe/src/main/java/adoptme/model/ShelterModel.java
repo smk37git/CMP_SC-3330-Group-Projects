@@ -3,11 +3,11 @@ package adoptme.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import adoptme.model.PetModel;
+import adoptme.model.IPetModel;
 import adoptme.model.PetAgeComparator;
 import adoptme.model.PetSpeciesComparator;
 
-public class ShelterModel <T extends PetModel> {
+public class ShelterModel <T extends IPetModel> {
 	
 	// Create Pets List
 	private List<T> pets = new ArrayList<>();

@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public interface PetModel extends Comparable<PetModel>{
+public interface IPetModel extends Comparable<IPetModel>{
 
 	// Getters and Setters
 	
@@ -46,6 +46,6 @@ public interface PetModel extends Comparable<PetModel>{
 	
 	//Comparable
 	@Override
-	public int compareTo(PetModel p);
+	public int compareTo(IPetModel p);
 	
 }

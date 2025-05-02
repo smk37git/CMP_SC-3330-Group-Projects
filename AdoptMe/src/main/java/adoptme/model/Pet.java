@@ -1,6 +1,6 @@
 package adoptme.model;
 
-public abstract class Pet implements PetModel{
+public abstract class Pet implements IPetModel{
 	//attributes
 	private int id;
 	private String name;
@@ -78,7 +78,7 @@ public abstract class Pet implements PetModel{
 	}
 	
 	@Override
-	public int compareTo(PetModel p) {
+	public int compareTo(IPetModel p) {
 		return this.name.compareTo(p.getName());
 	}
 }

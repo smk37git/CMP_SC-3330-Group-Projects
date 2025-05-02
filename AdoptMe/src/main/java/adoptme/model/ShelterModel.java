@@ -3,9 +3,10 @@ package adoptme.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import adoptme.comparators.PetAgeComparator;
+import adoptme.comparators.PetSpeciesComparator;
 import adoptme.model.IPetModel;
-import comparators.PetAgeComparator;
-import comparators.PetSpeciesComparator;
 
 public class ShelterModel <T extends IPetModel> {
 	

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import adoptme.model.IPetModel;
-import adoptme.model.PetAgeComparator;
-import adoptme.model.PetSpeciesComparator;
+import comparators.PetAgeComparator;
+import comparators.PetSpeciesComparator;
 
 public class ShelterModel <T extends IPetModel> {
 	

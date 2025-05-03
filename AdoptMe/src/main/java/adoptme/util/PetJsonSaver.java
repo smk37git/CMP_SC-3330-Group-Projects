@@ -15,7 +15,6 @@ public class PetJsonSaver {
     public static void savePetsToFile(List<IPetModel> pets) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        // Format: YYYYMMDD_HHMMSS_pets.json
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String filename = timestamp + "_pets.json";
 

@@ -2,7 +2,10 @@ package adoptme;
 
 import adoptme.model.*;
 import adoptme.util.*;
+import adoptme.view.*;
 import java.util.List;
+
+import javax.swing.SwingUtilities;
 
 public class Main {
 
@@ -15,13 +18,7 @@ public class Main {
         regularPets.forEach(shelter::addPet);
         exoticPets.forEach(shelter::addPet);
 
-        System.out.println("Loaded pets:");
-        for (IPetModel pet : shelter.getAllPets()) {
-            System.out.println(pet);
-        }
-
-     // ... inside main()
-     PetJsonSaver.savePetsToFile(shelter.getAllPets());
+        new PetView(shelter.getAllPets());
 
     }
 }

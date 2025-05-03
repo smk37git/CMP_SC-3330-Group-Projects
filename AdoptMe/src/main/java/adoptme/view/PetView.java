@@ -14,6 +14,7 @@ public class PetView extends JFrame {
 	private JTextArea petDisplay;
     private JButton saveButton;
     private JComboBox<String> sortComboBox;
+    private JButton adoptButton;
 
     private List<IPetModel> pets; // store reference so we can sort it
 
@@ -52,15 +53,51 @@ public class PetView extends JFrame {
             }
             displayPets(pets);
         });
+        
+        adoptButton = new JButton("Adopt Pet");
+        adoptButton.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog(this, "Enter Pet ID to adopt:");
+            if (input != null) {
+                try {
+                    int id = Integer.parseInt(input.trim());
+                    boolean found = false;
+
+                    for (IPetModel pet : pets) {
+                        if (pet.getId() == id) {
+                            found = true;
+                            if (!pet.isAdopted()) {
+                                pet.setAdopted(true);
+                                JOptionPane.showMessageDialog(this, pet.getName() + " has been adopted!");
+                            } else {
+                                JOptionPane.showMessageDialog(this, pet.getName() + " is already adopted!");
+                            }
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        JOptionPane.showMessageDialog(this, "No pet found with ID " + id);
+                    }
+
+                    displayPets(pets);
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Invalid ID format.");
+                }
+            }
+        });
+
 
         // Layout
-        JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(sortComboBox, BorderLayout.WEST);
-        buttonPanel.add(saveButton, BorderLayout.EAST);
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        buttonPanel.add(sortComboBox);
+        buttonPanel.add(adoptButton);
+        buttonPanel.add(saveButton);
 
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(buttonPanel, BorderLayout.SOUTH);
+
 
         add(panel);
         setVisible(true);

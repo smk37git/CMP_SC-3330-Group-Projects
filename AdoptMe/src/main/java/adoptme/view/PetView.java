@@ -16,6 +16,7 @@ public class PetView extends JFrame {
     private JComboBox<String> sortComboBox;
     private JButton adoptButton;
     private JButton addButton;
+    private JButton removeButton;
 
     private List<IPetModel> pets; // store reference so we can sort it
 
@@ -146,13 +147,39 @@ public class PetView extends JFrame {
                 }
             }
         });
+        
+        
+        removeButton = new JButton("Remove Pet");
+        removeButton.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog(this, "Enter Pet ID to remove:");
+            if (input != null) {
+                try {
+                    int id = Integer.parseInt(input.trim());
+                    boolean removed = pets.removeIf(p -> p.getId() == id);
+
+                    if (removed) {
+                        JOptionPane.showMessageDialog(this, "Pet with ID " + id + " removed.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No pet found with ID " + id);
+                    }
+
+                    displayPets(pets);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Invalid ID format.");
+                }
+            }
+        });
 
 
 
-        // Layout
+        
+        /**
+         * This puts the buttons onto the window for the user to click
+         */
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
         buttonPanel.add(sortComboBox);
         buttonPanel.add(adoptButton);
+        buttonPanel.add(removeButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(addButton);
 

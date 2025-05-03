@@ -15,6 +15,7 @@ public class PetView extends JFrame {
     private JButton saveButton;
     private JComboBox<String> sortComboBox;
     private JButton adoptButton;
+    private JButton addButton;
 
     private List<IPetModel> pets; // store reference so we can sort it
 
@@ -86,6 +87,66 @@ public class PetView extends JFrame {
                 }
             }
         });
+        
+        addButton = new JButton("Add Pet");
+        addButton.addActionListener(e -> {
+            JTextField nameField = new JTextField();
+            JTextField speciesField = new JTextField();
+            JTextField ageField = new JTextField();
+            String[] petTypes = {"Dog", "Cat", "Rabbit"};
+            JComboBox<String> typeComboBox = new JComboBox<>(petTypes);
+
+            JPanel form = new JPanel(new GridLayout(0, 1));
+            form.add(new JLabel("Type:"));
+            form.add(typeComboBox);
+            form.add(new JLabel("Name:"));
+            form.add(nameField);
+            form.add(new JLabel("Species:"));
+            form.add(speciesField);
+            form.add(new JLabel("Age:"));
+            form.add(ageField);
+
+            int result = JOptionPane.showConfirmDialog(this, form, "Add New Pet",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            if (result == JOptionPane.OK_OPTION) {
+                try {
+                    String type = (String) typeComboBox.getSelectedItem();
+                    String name = nameField.getText().trim();
+                    String species = speciesField.getText().trim();
+                    int age = Integer.parseInt(ageField.getText().trim());
+
+                    IPetModel pet = null;
+                    switch (type) {
+                        case "Dog":
+                            pet = new DogModel();
+                            break;
+                        case "Cat":
+                            pet = new CatModel();
+                            break;
+                        case "Rabbit":
+                            pet = new RabbitModel();
+                            break;
+                    }
+
+                    if (pet != null) {
+                        int newId = pets.stream().mapToInt(IPetModel::getId).max().orElse(0) + 1;
+                        pet.setId(newId);
+                        pet.setName(name);
+                        pet.setType(type);
+                        pet.setSpecies(species);
+                        pet.setAge(age);
+                        pet.setAdopted(false);
+                        pets.add(pet);
+                        displayPets(pets);
+                        JOptionPane.showMessageDialog(this, type + " added successfully!");
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Invalid age.");
+                }
+            }
+        });
+
 
 
         // Layout
@@ -93,6 +154,7 @@ public class PetView extends JFrame {
         buttonPanel.add(sortComboBox);
         buttonPanel.add(adoptButton);
         buttonPanel.add(saveButton);
+        buttonPanel.add(addButton);
 
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(scrollPane, BorderLayout.CENTER);

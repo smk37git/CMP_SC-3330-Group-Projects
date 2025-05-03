@@ -14,15 +14,16 @@ public class PetJsonLoader {
         List<IPetModel> allPets = new ArrayList<>();
 
         try (Reader reader = new InputStreamReader(
-                PetJsonLoader.class.getResourceAsStream("/pets.json"))) {
+                PetJsonLoader.class.getResourceAsStream("/resources/pets.json"))) {
 
             Gson gson = new Gson();
-            List<BasicPet> pets = gson.fromJson(reader, new TypeToken<List<BasicPet>>() {}.getType());
+            List<Map<String, Object>> rawPets = gson.fromJson(reader, new TypeToken<List<Map<String, Object>>>() {}.getType());
 
-            for (BasicPet pet : pets) {
-                IPetModel model;
+            for (Map<String, Object> petData : rawPets) {
+                String type = (String) petData.get("type");
+                IPetModel model = null;
 
-                switch (pet.getType()) {
+                switch (type) {
                     case "Dog":
                         model = new DogModel();
                         break;
@@ -33,15 +34,15 @@ public class PetJsonLoader {
                         model = new RabbitModel();
                         break;
                     default:
-                        continue; // skip unknown types
+                        continue; // Skip unknown types
                 }
-                
-                model.setId(pet.getId());
-                model.setName(pet.getName());
-                model.setType(pet.getType());
-                model.setSpecies(pet.getSpecies());
-                model.setAge(pet.getAge());
-                model.setAdopted(pet.isAdopted());
+
+                model.setId(((Double) petData.get("id")).intValue());
+                model.setName((String) petData.get("name"));
+                model.setType(type);
+                model.setSpecies((String) petData.get("species"));
+                model.setAge(((Double) petData.get("age")).intValue());
+                model.setAdopted((Boolean) petData.get("adopted"));
 
                 allPets.add(model);
             }
@@ -57,7 +58,7 @@ public class PetJsonLoader {
         List<IPetModel> exoticPets = new ArrayList<>();
 
         try (Reader reader = new InputStreamReader(
-                PetJsonLoader.class.getResourceAsStream("/exotic_animals.json"))) {
+                PetJsonLoader.class.getResourceAsStream("/resources/exotic_animals.json"))) {
 
             Gson gson = new Gson();
             List<ExoticAnimalModel> exotics = gson.fromJson(reader, new TypeToken<List<ExoticAnimalModel>>() {}.getType());

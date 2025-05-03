@@ -19,5 +19,9 @@ public class Main {
         for (IPetModel pet : shelter.getAllPets()) {
             System.out.println(pet);
         }
+
+     // ... inside main()
+     PetJsonSaver.savePetsToFile(shelter.getAllPets());
+
     }
 }

@@ -3,13 +3,14 @@ package adoptme.view;
 import adoptme.model.*;
 import adoptme.controller.*;
 import adoptme.util.*;
-import adoptme.comparators.*;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collections;
 import java.util.List;
 
+/**
+ * The pet view class extends JFrame to use the variety of display
+ * functions in its database
+ */
 public class PetView extends JFrame {
 	
 	private PetController controller;
@@ -22,42 +23,56 @@ public class PetView extends JFrame {
 
     private List<IPetModel> pets; // store reference so we can sort it
 
-    public PetView(List<IPetModel> pets) {
-        this.pets = pets;
+    public PetView(PetController controller) {
+    	this.controller = controller;
+    	this.pets = controller.getPets();
 
+    	/**
+    	 * Creates the window and makes the code end when the window
+    	 * closes
+    	 */
         setTitle("Adopt Me! - Pet Shelter");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
 
-        // Text area
+        // displays all of the pets in the shelter through JFrame functions
         petDisplay = new JTextArea(15, 50);
         petDisplay.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(petDisplay);
 
-        // Save button
+        // makes the save button
         saveButton = new JButton("Save Pets");
         saveButton.addActionListener(e -> PetJsonSaver.savePetsToFile(pets));
 
-        // Sort drop-down
+        /**
+         * Makes a drop-down menu for sorting options
+         * User can choose which option they want and it calls the
+         * corresponding function through the controller
+         */
         String[] sortOptions = {"Sort by Name", "Sort by Age", "Sort by Species"};
         sortComboBox = new JComboBox<>(sortOptions);
         sortComboBox.addActionListener(e -> {
             String choice = (String) sortComboBox.getSelectedItem();
             switch (choice) {
                 case "Sort by Name":
-                    Collections.sort(pets); // uses Comparable
+                    controller.sortByName(); // uses Comparable
                     break;
                 case "Sort by Age":
-                    Collections.sort(pets, new PetAgeComparator());
+                    controller.sortByAge();
                     break;
                 case "Sort by Species":
-                    Collections.sort(pets, new PetSpeciesComparator());
+                    controller.sortBySpecies();
                     break;
             }
             displayPets(controller.getPets());
         });
         
+        /**
+         * Adopt function makes a button with "Adopt Pet" on it. When the
+         * user clicks it, they are prompted and asked for an ID of the pet
+         * they would wish to adopt. It then reads that input and adopts the
+         * pet or returns and error to the user.
+         */
         adoptButton = new JButton("Adopt Pet");
         adoptButton.addActionListener(e -> {
             String input = JOptionPane.showInputDialog(this, "Enter Pet ID to adopt:");
@@ -79,6 +94,11 @@ public class PetView extends JFrame {
             }
         });
         
+        /**
+         * makes and add pet button that prompts the user for the details
+         * of the pet they want to add. The function is long because of all
+         * the details but is actually pretty simple.
+         */
         addButton = new JButton("Add Pet");
         addButton.addActionListener(e -> {
             JTextField nameField = new JTextField();
@@ -87,6 +107,7 @@ public class PetView extends JFrame {
             String[] petTypes = {"Dog", "Cat", "Rabbit"};
             JComboBox<String> typeComboBox = new JComboBox<>(petTypes);
 
+            
             JPanel form = new JPanel(new GridLayout(0, 1));
             form.add(new JLabel("Type:"));
             form.add(typeComboBox);
@@ -138,7 +159,12 @@ public class PetView extends JFrame {
             }
         });
         
-        
+        /**
+         * Adopt function makes a button with "Remove Pet" on it. When the
+         * user clicks it, they are prompted and asked for an ID of the pet
+         * they would wish to remove. It then reads that input and removes the
+         * pet or returns and error to the user.
+         */
         removeButton = new JButton("Remove Pet");
         removeButton.addActionListener(e -> {
             String input = JOptionPane.showInputDialog(this, "Enter Pet ID to remove:");
@@ -164,7 +190,8 @@ public class PetView extends JFrame {
 
         
         /**
-         * This puts the buttons onto the window for the user to click
+         * This makes a panel at the bottom of the window and
+         * puts the buttons into the panel for nice formatting.
          */
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
         buttonPanel.add(sortComboBox);
@@ -184,16 +211,12 @@ public class PetView extends JFrame {
         displayPets(controller.getPets());
     }
 
+    //This functions displays all of the pets in the shelter
     public void displayPets(List<IPetModel> pets) {
         StringBuilder builder = new StringBuilder();
         for (IPetModel pet : pets) {
             builder.append(pet.toString()).append("\n");
         }
         petDisplay.setText(builder.toString());
-    }
-    
-    public PetView(PetController controller) {
-    	this.controller = controller;
-    	this.pets = controller.getPets();
     }
 }

@@ -28,6 +28,13 @@ public class PetController {
         return shelter.adoptPet(id);
     }
 
+    /**
+     * 
+     * @param id
+     * checks to see if the pet id exists in the shelter. If it
+     * does exist, it calls the remove pet function. If it doesn't,
+     * it returns false and the PetView acts accordingly
+     */
     public boolean removePet(int id) {
         List<IPetModel> all = shelter.getAllPets();
         for (IPetModel pet : all) {

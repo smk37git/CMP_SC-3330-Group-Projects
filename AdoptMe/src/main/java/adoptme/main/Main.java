@@ -1,6 +1,7 @@
-package adoptme;
+package adoptme.main;
 
 import adoptme.model.*;
+import adoptme.controller.*;
 import adoptme.util.*;
 import adoptme.view.*;
 import java.util.List;
@@ -9,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         ShelterModel<IPetModel> shelter = new ShelterModel<>();
+        PetController controller = new PetController(shelter);
 
         List<IPetModel> regularPets = PetJsonLoader.loadPetsFromJson();
         List<IPetModel> exoticPets = PetJsonLoader.loadExoticsFromJson();
@@ -16,7 +18,7 @@ public class Main {
         regularPets.forEach(shelter::addPet);
         exoticPets.forEach(shelter::addPet);
 
-        new PetView(shelter.getAllPets());
+        new PetView(controller);
 
     }
 }

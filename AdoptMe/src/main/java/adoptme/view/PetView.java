@@ -1,6 +1,7 @@
 package adoptme.view;
 
 import adoptme.model.*;
+import adoptme.controller.*;
 import adoptme.util.*;
 import adoptme.comparators.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class PetView extends JFrame {
 	
+	private PetController controller;
 	private JTextArea petDisplay;
     private JButton saveButton;
     private JComboBox<String> sortComboBox;
@@ -53,7 +55,7 @@ public class PetView extends JFrame {
                     Collections.sort(pets, new PetSpeciesComparator());
                     break;
             }
-            displayPets(pets);
+            displayPets(controller.getPets());
         });
         
         adoptButton = new JButton("Adopt Pet");
@@ -62,26 +64,14 @@ public class PetView extends JFrame {
             if (input != null) {
                 try {
                     int id = Integer.parseInt(input.trim());
-                    boolean found = false;
-
-                    for (IPetModel pet : pets) {
-                        if (pet.getId() == id) {
-                            found = true;
-                            if (!pet.isAdopted()) {
-                                pet.setAdopted(true);
-                                JOptionPane.showMessageDialog(this, pet.getName() + " has been adopted!");
-                            } else {
-                                JOptionPane.showMessageDialog(this, pet.getName() + " is already adopted!");
-                            }
-                            break;
-                        }
+                    boolean adopted = controller.adoptPet(id);
+                    if (adopted) {
+                        JOptionPane.showMessageDialog(this, "Pet has been adopted!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Pet not found or already adopted");
                     }
 
-                    if (!found) {
-                        JOptionPane.showMessageDialog(this, "No pet found with ID " + id);
-                    }
-
-                    displayPets(pets);
+                    displayPets(controller.getPets());
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, "Invalid ID format.");
@@ -138,8 +128,8 @@ public class PetView extends JFrame {
                         pet.setSpecies(species);
                         pet.setAge(age);
                         pet.setAdopted(false);
-                        pets.add(pet);
-                        displayPets(pets);
+                        controller.addPet(pet);
+                        displayPets(controller.getPets());
                         JOptionPane.showMessageDialog(this, type + " added successfully!");
                     }
                 } catch (NumberFormatException ex) {
@@ -154,8 +144,8 @@ public class PetView extends JFrame {
             String input = JOptionPane.showInputDialog(this, "Enter Pet ID to remove:");
             if (input != null) {
                 try {
-                    int id = Integer.parseInt(input.trim());
-                    boolean removed = pets.removeIf(p -> p.getId() == id);
+                    int id = Integer.parseInt(input);
+                    boolean removed = controller.removePet(id);
 
                     if (removed) {
                         JOptionPane.showMessageDialog(this, "Pet with ID " + id + " removed.");
@@ -163,7 +153,7 @@ public class PetView extends JFrame {
                         JOptionPane.showMessageDialog(this, "No pet found with ID " + id);
                     }
 
-                    displayPets(pets);
+                    displayPets(controller.getPets());
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, "Invalid ID format.");
                 }
@@ -191,7 +181,7 @@ public class PetView extends JFrame {
         add(panel);
         setVisible(true);
 
-        displayPets(pets);
+        displayPets(controller.getPets());
     }
 
     public void displayPets(List<IPetModel> pets) {
@@ -200,5 +190,10 @@ public class PetView extends JFrame {
             builder.append(pet.toString()).append("\n");
         }
         petDisplay.setText(builder.toString());
+    }
+    
+    public PetView(PetController controller) {
+    	this.controller = controller;
+    	this.pets = controller.getPets();
     }
 }
